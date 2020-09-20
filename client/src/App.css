@@ -1,38 +1,220 @@
-.App {
+.grid {
   text-align: center;
+  justify-content: center;
+  display: grid;
+  background-color:#fff;
+  display:grid;
+  grid-template-columns: 40% 40%;
+  grid-row: auto auto;
+  margin-top: 140px;
+  grid-template: "input input";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mainpage {
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  background-color:#fff;
+  display:grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-row: auto auto auto;
+  margin-top: 140px;
+  grid-template: "input input input";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
+.input {
+  position: fixed;
+  top: 40px;
+  left: 850px;
+  z-index: 3;
+  text-align: center;
+  align-items: center;
+}
+.header {
   background-color: #282c34;
-  min-height: 100vh;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: fantasy;
+  color: white;
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.line {
+  padding: 0px;
+  margin: 0px
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 15px 200px 15px 5px;
+  color: rgba(192, 8, 192, 0.747)
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+ 
+.card {
+  border-style: solid;
+  border-width: medium;
+  justify-content: space-between;
+  background-color: rgba(192, 8, 192, 0.747) ;
+  border-radius: 2%;
+  font-style: italic;
+  padding: 10px; 
+  height: 270px;
+  width: 250px;
+}
+
+.miniCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color:  rgb(187, 174, 199);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+
+#card {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.title {
+  font-style: italic;
+}
+
+button {
+  background-color: lavender;
+  border-radius: 20px;
+  border: lavender;
+  font-weight: bold;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: rebeccapurple;
+}
+
+.about {
+  padding-top: 12px;
+  display: flex;
+  gap: 8px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-bottom: 5px;
+  
 }
 
-.App-link {
-  color: #61dafb;
+h2 {
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  color: #282c34;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.a {
+  background-color: rgb(187, 174, 199);
+  padding: 30px;
+  border: black;
+  border-top-style: solid;
+  border-left-style: solid;
+}
+
+.b {
+  background-color: rgb(134, 133, 133);
+  padding: 30px;
+  border: black;
+  border-style: solid;
+}
+
+.c {
+  background-color: rgb(134, 133, 133);
+  padding: 30px;
+  border: black;
+  border-style: solid;
+} 
+
+.d {
+  background-color: rgb(187, 174, 199);
+  padding: 30px;
+  border: black;
+  border-bottom-style: solid;
+  border-right-style: solid;
+}
+
+.subpage {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  
+}
+
+.single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style: solid;
+  border-width: thick;
+  border-color: black;
+  border-radius: 3%;
+  width: 60%;
+  margin-left: 50px;
+  row-gap: 10px;
+  padding: 20px;
+}
+
+.recomended {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: thick;
+  border-color: black;
+  border-radius: 3%;
+  width: 30%;
+  margin-right: 20px;
+  column-gap: 40px;
+  padding: 20px;
+}
+
+#album {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.albumPage {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+}
+#artist {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.artistpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carusels {
+  display: flex;
+  gap: 30px;
 }
