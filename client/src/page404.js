@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Page404 () {
     return (
-        <div>SHIT</div>
+        <div className="notfound">
+            <div className="shit">Why Like This?</div>
+        </div>
     )
 }

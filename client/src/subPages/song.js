@@ -37,6 +37,7 @@ export default function Song () {
   
 
   function playNext () {
+    recomendedSongs[0].id && 
     history.push(`/songs/${recomendedSongs[0].id}${location.search}`)
   }
 

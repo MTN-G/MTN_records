@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import YouTube from 'react-youtube';
 
 export default function SongCard({
   song, type, typeId, miniCard,
@@ -10,11 +9,6 @@ export default function SongCard({
   if (type && typeId) {
     url = `/songs/${song.id}?${type}=${typeId}`;
   }
-
-  const opts = {
-    height: '100',
-    width: '200',
-  };
 
   if (miniCard) {
     return (
@@ -33,7 +27,7 @@ export default function SongCard({
     <div key={song.id} className="card">
       <h2 className="title">{song.name || song.song}</h2>
       <br />
-      <img src={`https://img.youtube.com/vi/${song.youtube_link}/0.jpg`} height="100" width="200"/>
+      <img alt="youtube" src={`https://img.youtube.com/vi/${song.youtube_link}/0.jpg`} height="100" width="200" style={{borderStyle: "solid"}}/>
       <div className="abouthome">
         {song.artist && (
           <div>

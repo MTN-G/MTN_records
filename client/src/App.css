@@ -149,7 +149,7 @@ h2 {
 
 .quarter {
   background-color: rgb(187, 174, 199);
-  padding: 30px;
+  padding: 10px;
   border: black;
   border-style: solid;
   border-width: thick;
@@ -244,4 +244,10 @@ h2 {
   width: 500px;
   justify-content: center;
   border-radius:  0 0 25px 25px;
+}
+
+.shit {
+  background-image: url("https://i.imagesup.co/images2/dab745b2f41bb6518f1d8c29ae89b0ec47ff98b9.jpg");
+  margin-top: 97px;
+  height: 480px
 }
