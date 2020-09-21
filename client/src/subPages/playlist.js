@@ -24,12 +24,12 @@ export default function Playlist() {
   return (
     <div id="album">
       <div className="albumPage">
-        <h2>{playlistInfo.playlist}</h2>
+        <h1 className="title">{playlistInfo.playlist}</h1>
         <img src={playlistInfo.pl_img} height="300" width="500" />
-        <br />
+        <br /><h3>
         {playlistSongs.length}
         {' '}
-        songs in this playlist
+        songs in this playlist</h3>
       </div>
       <Carousel>
         {playlistSongs.map(

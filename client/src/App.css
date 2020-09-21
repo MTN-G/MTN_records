@@ -1,14 +1,19 @@
+
+
 .grid {
   text-align: center;
   justify-content: center;
   display: grid;
   background-color:#fff;
   display:grid;
-  grid-template-columns: 40% 40%;
-  grid-row: auto auto;
   margin-top: 140px;
-  grid-template: "input input";
+  margin-bottom: 50px;
+  grid-template: "input input"
+                 "input input";
+  row-gap: 15px;
+  column-gap: 15px;
 }
+
 
 .mainpage {
   text-align: center;
@@ -27,11 +32,14 @@
 
 .input {
   position: fixed;
-  top: 40px;
+  top: 33px;
   left: 850px;
   z-index: 3;
   text-align: center;
   align-items: center;
+  height: 25px;
+  width: 220px;
+  border-radius: 20px;
 }
 .header {
   background-color: #282c34;
@@ -69,11 +77,10 @@
   border-style: solid;
   border-width: medium;
   justify-content: space-between;
-  background-color: rgba(192, 8, 192, 0.747) ;
+  background-image: url("https://s.tmimgcdn.com/scr/800x500/84200/colorful-polygon-backgrounds-background_84213-original.jpg");
   border-radius: 2%;
   font-style: italic;
   padding: 10px; 
-  height: 270px;
   width: 250px;
 }
 
@@ -96,12 +103,15 @@
 
 .title {
   font-style: italic;
+  text-align: center;
+  font-weight: 900;
+  
 }
 
 button {
   background-color: lavender;
+  border-color: cornflowerblue;
   border-radius: 20px;
-  border: lavender;
   font-weight: bold;
   padding: 5px;
 }
@@ -111,61 +121,56 @@ button:hover {
 }
 
 .about {
+  font-weight: bolder;
   padding-top: 12px;
   display: flex;
   gap: 8px;
-  justify-content: center;
   padding-bottom: 5px;
-  
+  background-color: rgb(187, 174, 199);
+  width: 490px;
+  padding-left: 10px;
+  border-radius: 25px 25px 0 0;
 }
+
+  .abouthome {
+  font-weight: bolder;
+  padding-top: 12px;
+  display: flex;
+  gap: 8px;
+  padding-bottom: 5px;
+  }
+  
+
 
 h2 {
   font-family: Impact, 'Arial Narrow Bold', sans-serif;
   color: #282c34;
 }
 
-.a {
+.quarter {
   background-color: rgb(187, 174, 199);
   padding: 30px;
   border: black;
-  border-top-style: solid;
-  border-left-style: solid;
-}
-
-.b {
-  background-color: rgb(134, 133, 133);
-  padding: 30px;
-  border: black;
   border-style: solid;
+  border-width: thick;
+  border-radius: 15px;
+  width: 380px;
 }
 
-.c {
-  background-color: rgb(134, 133, 133);
-  padding: 30px;
-  border: black;
-  border-style: solid;
-} 
 
-.d {
-  background-color: rgb(187, 174, 199);
-  padding: 30px;
-  border: black;
-  border-bottom-style: solid;
-  border-right-style: solid;
-}
-
-.subpage {
+.songPage {
   margin-top: 140px;
   display: flex;
   flex-direction: row;
   gap: 40px;
+ 
   
 }
 
 .single {
-  display: flex;
+  background-image:url("https://3pageplus.com/wp-content/uploads/2019/03/change-background-color-on-wix-1024x678.jpg");
   flex-direction: column;
-  align-items: center;
+  justify-items: center;
   border-style: solid;
   border-width: thick;
   border-color: black;
@@ -187,6 +192,7 @@ h2 {
   margin-right: 20px;
   column-gap: 40px;
   padding: 20px;
+  background-image:url("https://3pageplus.com/wp-content/uploads/2019/03/change-background-color-on-wix-1024x678.jpg");
 }
 
 #album {
@@ -216,5 +222,26 @@ h2 {
 }
 .carusels {
   display: flex;
-  gap: 30px;
+  justify-content: center;
+  gap: 50px;
+}
+
+.titleSong {
+  background-color: rgb(187, 174, 199);
+  border-radius: 20px;
+  padding: 7px;
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+}
+
+.created {
+  padding-top: 10px;
+  display: flex;
+  margin: 0%;
+  padding-bottom: 5px;
+  background-color: rgb(187, 174, 199);
+  width: 500px;
+  justify-content: center;
+  border-radius:  0 0 25px 25px;
 }

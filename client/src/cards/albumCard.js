@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export default function AlbumCard({ album }) {
   return (
     <div className="card" id="card" key={album.id}>
-      <b className="title">{album.album || album.name}</b>
+      <h2 className="title">{album.album || album.name}</h2>
       <br />
-      <img src={album.al_img} alt="cover" width="200" height="100" style={{ marginBottom: '43px' }} />
+      <img src={album.al_img} alt="cover" width="200" height="100" style={{ marginBottom: '43px' , borderStyle: "solid"}} />
       {album.artist
         && (
         <div>

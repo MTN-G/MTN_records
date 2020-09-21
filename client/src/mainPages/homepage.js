@@ -25,7 +25,6 @@ export default function HomePage () {
   const importAlbums = async () => {
     const { data } = await axios.get('/top_albums');
     setTopAlbums(data);
-    console.log(topAlbums);
   };
 
   const importPlaylists = async () => {
@@ -40,9 +39,11 @@ export default function HomePage () {
     importPlaylists();
   }, []);
 
+  
+
   return (
     <div className="grid">
-      <div className="a">
+      <div className="quarter">
         <h2>Top 20 Song</h2>
         <Carousel>
           {topSongs.map(
@@ -51,7 +52,7 @@ export default function HomePage () {
         </Carousel>
         <hr />
       </div>
-      <div className="b">
+      <div className="quarter">
         <h2>Top 20 Artists</h2>
         <Carousel>
           {topArtists.map(
@@ -60,7 +61,7 @@ export default function HomePage () {
         </Carousel>
         <hr />
       </div>
-      <div className="c">
+      <div className="quarter">
         <h2>Top 20 Albums</h2>
         <Carousel>
           {topAlbums.map(
@@ -69,7 +70,7 @@ export default function HomePage () {
         </Carousel>
         <hr />
       </div>
-      <div className="d">
+      <div className="quarter">
         <h2>Top 20 Playlists</h2>
         <Carousel>
           {topPlaylists.map(

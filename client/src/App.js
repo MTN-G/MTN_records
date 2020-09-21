@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import HomePage from './mainPages/homepage.js';
 import Songs from './mainPages/songs.js';
@@ -9,9 +9,10 @@ import Albums from './mainPages/albums.js';
 import Album from './subPages/album.js';
 import Playlists from './mainPages/playlists.js';
 import Playlist from './subPages/playlist.js';
-import {BrowserRouter, Switch, Route, useParams} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from './header.js';
 import axios from 'axios';
+import Page404 from './page404'
 
    
 
@@ -28,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className="app">
     <BrowserRouter>
     <Header/>
     <Switch>
@@ -41,8 +42,9 @@ export default function App() {
     <Route path='/artists/:id' component={() => <Artist/>}/>
     <Route path='/albums/:id' component={() => <Album/>}/>
     <Route path='/playlists/:id' component={() => <Playlist/>}/>
+    <Route path='/404' component={() => <Page404/>}/>
     </Switch>
     </BrowserRouter>
-    </>
+    </div>
   );
 };

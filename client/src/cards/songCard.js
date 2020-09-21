@@ -10,7 +10,6 @@ export default function SongCard({
   if (type && typeId) {
     url = `/songs/${song.id}?${type}=${typeId}`;
   }
-  console.log(url);
 
   const opts = {
     height: '100',
@@ -32,10 +31,10 @@ export default function SongCard({
   return (
 
     <div key={song.id} className="card">
-      <b className="title">{song.name || song.song}</b>
+      <h2 className="title">{song.name || song.song}</h2>
       <br />
-      <YouTube videoId={song.youtube_link} opts={opts} />
-      <div className="about">
+      <img src={`https://img.youtube.com/vi/${song.youtube_link}/0.jpg`} height="100" width="200"/>
+      <div className="abouthome">
         {song.artist && (
           <div>
             {' '}

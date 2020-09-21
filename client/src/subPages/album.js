@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard';
@@ -25,17 +25,17 @@ export default function Song() {
   return (
     <div id="album">
       <div className="albumPage">
-        <h2>{albumInfo.album}</h2>
-        <p>{albumInfo.artist}</p>
+        <h1 className="title">{albumInfo.album}</h1>
+        <h3>by: </h3><Link to={`/artists/${albumInfo.artist_id}`}><button>{albumInfo.artist}</button></Link>
         <img src={albumInfo.al_img} height="300" width="500" />
         <br />
-        {albumSongs.length}
+        <h3>{albumSongs.length}
         {' '}
-        songs in this album
+        songs in this album</h3>
       </div>
       <Carousel id="songsAlbum">
         {albumSongs.map(
-          (song) => <SongCard song={song} type="album" typeId={albumInfo.id} />,
+          (song) => <SongCard albumSongs={albumSongs} song={song} type="album" typeId={albumInfo.id} />,
         )}
       </Carousel>
     </div>

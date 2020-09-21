@@ -24,11 +24,31 @@ mysqlCon.connect(err => {
     console.log("Connected!");
 });
 
+function playReapet (nextSong, prevSong, results, res) {
+    mysqlCon.query(`${nextSong}`, 
+        (errorA, resA) => {
+            if (errorA) {
+                res.status(400).send(errorA);
+            }
+            results[0].push(resA[0])
+            
+        })
+    mysqlCon.query(`${prevSong}`, 
+        (errorA, resA) => {
+            if (errorA) {
+                res.status(400).send(errorA);
+            }
+            results[0].push(resA[0])
+            res.status(200).send(results[0]);
+        })
+}
+
+// get 20 top of.. 
 app.get('/top_songs', (req, res) => {
     mysqlCon.query(`CALL get_top_songs`,
     (error, results)=> {
         if (error) {
-            res.send(error.message);
+            res.status(404).send(error.message);
         };
         res.send(results[0]);
       });
@@ -64,6 +84,7 @@ app.get('/top_playlists', (req, res) => {
       });
 });
 
+// get song info and suggested song
 app.get(`/songs/:id/`, (req, res)=>{
     mysqlCon.query(`CALL get_song_by_id (${req.params.id})`,
     (error, results) => {
@@ -71,47 +92,28 @@ app.get(`/songs/:id/`, (req, res)=>{
             res.status(400).send(error);
         };
         if (req.query.album) {
-            mysqlCon.query(`select s.* , al.name album from songs s
-            join albums al on s.album_id = al.id
-            where al.id = ${req.query.album} and s.id != ${req.params.id};`,
-            (albumErr, albumRes) => {
-                if (albumErr) {
-                    res.status(400).send(error);
-                    console.log('shit')
-                }
-                results[0].push(albumRes)
-                res.status(200).send(results[0]);
-            })
+            playReapet(
+                `CALL next_song_album  (${req.query.album}, ${req.params.id})`,
+                `CALL prev_song_album  (${req.query.album}, ${req.params.id})`,
+                results, res)
         } 
-        else if (req.query.artist) {
-            mysqlCon.query(`select s.* , ar.name artist from songs s
-            join artists ar on s.artist_id = ar.id
-            where ar.id = ${req.query.artist} and s.id != ${req.params.id};`,
-            (artistErr, artistRes) => {
-                if (artistErr) {
-                    res.status(400).send(error);
-                }
-                results[0].push(artistRes)
-                res.status(200).send(results[0]);
-            })
+         else if (req.query.artist) {
+             playReapet(
+                `CALL next_song_artist  (${req.query.artist}, ${req.params.id})`,
+                `CALL prev_song_artist  (${req.query.artist}, ${req.params.id})`,
+                results, res)
         }
         else if (req.query.playlist) {
-            mysqlCon.query(`select s.* , pl.name playlist, pl.id pl_id from songs s
-            join playlist_songs ps on ps.song_id = s.id
-            join playlists pl on pl.id = ps.playlist_id
-            where pl.id = ${req.query.playlist} and s.id != ${req.params.id};`,
-            (playlistErr, playlistRes) => {
-                if (playlistErr) {
-                    res.status(404).send(error);
-                }
-                results[0].push(playlistRes)
-                res.status(200).send(results[0]);
-            }) 
+            playReapet(
+                `CALL next_songs (${req.query.playlist}, ${req.params.id})`,
+                `CALL prev_songs (${req.query.playlist}, ${req.params.id})`,
+                results, res)
         } else {
         res.status(200).send(results[0]);
     }});
 });
 
+// get specific artist
 app.get(`/artists/:id`, (req, res)=>{
     mysqlCon.query(`CALL get_artist_by_id (${req.params.id})`,
     (error, results)=>{
@@ -122,6 +124,7 @@ app.get(`/artists/:id`, (req, res)=>{
     });
 });
 
+// get all songs of artist
 app.get(`/artists/:id/songs`, (req, res)=>{
     mysqlCon.query(`CALL songs_of_artist (${req.params.id})`,
     (error, results)=>{
@@ -132,6 +135,7 @@ app.get(`/artists/:id/songs`, (req, res)=>{
     });
 });
 
+// get specific album 
 app.get(`/albums/:id`, (req, res)=>{
     mysqlCon.query(`CALL get_album_by_id (${req.params.id})`,
     (error, results)=>{
@@ -142,6 +146,7 @@ app.get(`/albums/:id`, (req, res)=>{
     });
 });
 
+// get specefic playlist
 app.get(`/playlists/:id`, (req, res)=>{
     mysqlCon.query(`CALL get_playlist_by_id (${req.params.id})`,
     (error, results)=>{
@@ -152,8 +157,7 @@ app.get(`/playlists/:id`, (req, res)=>{
     });
 });
 
-
-
+// post new element
 app.post(`/:table`, (req, res)=>{
     const newRow = req.body;
     mysqlCon.query(`INSERT INTO ${req.params.table}s set ?`, [newRow],
@@ -165,6 +169,7 @@ app.post(`/:table`, (req, res)=>{
     });
 })
 
+// update element
 app.put(`/:table/:id`, (req, res)=>{
     const id = req.params.id;
     const newRow = req.body;
@@ -177,6 +182,7 @@ app.put(`/:table/:id`, (req, res)=>{
     });
 })
 
+// delete element
 app.delete(`/:table/:id`, (req, res) => {
     const id = req.params.id;
     mysqlCon.query(`DELETE FROM ${req.params.table}s WHERE id = ?`, [id],
@@ -188,7 +194,7 @@ app.delete(`/:table/:id`, (req, res) => {
     });
 })
 
-
+// get all from element
 app.get(`/:table/`, (req, res) => {
     mysqlCon.query(`SELECT * from ${req.params.table}`,
     (error, results)=>{
@@ -204,6 +210,5 @@ app.get(`/:table/`, (req, res) => {
           }
     });
 })
-
 
 app.listen(3001)
