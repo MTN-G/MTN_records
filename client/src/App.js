@@ -10,9 +10,9 @@ import Album from './subPages/album.js';
 import Playlists from './mainPages/playlists.js';
 import Playlist from './subPages/playlist.js';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
-import Header from './header.js';
+import Header from './components/header.js';
 import axios from 'axios';
-import Page404 from './page404'
+import Page404 from './components/page404'
 
    
 

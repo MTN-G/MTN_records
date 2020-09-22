@@ -14,15 +14,16 @@ export default function Song() {
     const { data } = await axios.get(match.url);
     setAlbumInfo(data[0]);
     setAlbumSongs(data);
-    console.log(data);
+    console.log(data); 
   };
 
   useEffect(() => {
     fetchAlbum();
-    console.log(albumInfo);
+    console.log(albumInfo) 
   }, []);
 
   return (
+    
     <div id="album">
       <div className="albumPage">
         <h1 className="title">{albumInfo.album}</h1>
