@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 export default function SongCard({
   song, type, typeId, miniCard,
 }) {
-  let url = `/songs/${song.id}`;
+  let url = `/songs/${ song.song_id || song.id}`;
 
   if (type && typeId) {
-    url = `/songs/${song.id}?${type}=${typeId}`;
+    url = `/songs/${song.song_id || song.id}?${type}=${typeId}`;
   }
 
   if (miniCard) {
     return (
       <>
-        <div key={song.id} className="miniCard">
+        <div key={song.song_id || song.id} className="miniCard">
           <b>{song.name}</b>
           <Link to={url}><button style={{ width: '50px', float: 'right' }}>Play Song</button></Link>
         </div>

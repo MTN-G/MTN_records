@@ -14,35 +14,29 @@ export default function Artist () {
 
   const fetchArtist = async () => {
     const { data } = await axios.get(match.url);
-    setArtistInfo(data[0])
-    setArtistAlbums(data)
+    setArtistInfo(data[0][0])
+    setArtistAlbums(data[0])
+    setArtistSongs(data[1])
   };
-
-  const fetchArtistSongs = async () => {
-    const { data } = await axios.get(`${match.url}/songs`);
-    setArtistSongs(data)
-    
-  };
-
 
   useEffect(()=>{
     fetchArtist()
-    fetchArtistSongs()
   },[])
 
   return (<div id="artist">
   <div className="artistpage">
       <h1 className="title">{artistInfo.artist}</h1>
-      <img src={artistInfo.ar_img} alt="cover" width="500" height="300" style={{marginBottom: "43px"}}></img>
+      
+      <img src={artistInfo.ar_img} alt="cover" width="500" height="300" style={{marginTop: '20px', borderStyle: 'solid', borderRadius: '20px', borderColor: "black"}}></img>
   </div>
   <div className="carusels">
     <div style={{width: "500px", textAlign: "center"}}>
   <h3>display {artistAlbums.length} albums of {artistInfo.artist} </h3>
-  <Carousel>
+  <Carousel >
     {artistAlbums.map(
     album => <AlbumCard album={album}/>   
     )}
-  </Carousel></div> 
+  </Carousel ></div> 
   <div style={{width: "500px",  textAlign: "center"}}> <h3>display {artistSongs.length} songs of {artistInfo.artist} </h3>
   <Carousel >
     {artistSongs.map(

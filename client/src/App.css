@@ -249,5 +249,10 @@ h2 {
 .shit {
   background-image: url("https://i.imagesup.co/images2/dab745b2f41bb6518f1d8c29ae89b0ec47ff98b9.jpg");
   margin-top: 97px;
-  height: 480px
+  height: 480px;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 230px;
+  color: #fff;
 }

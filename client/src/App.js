@@ -14,15 +14,15 @@ import Header from './components/header.js';
 import axios from 'axios';
 import Page404 from './components/page404'
 
-   
-
 export default function App() {
-
+  
+  // generic function for get full list of datatype
   const fetchData = async (type, setList) => {
       const { data } = await axios.get(type);
       setList(data)
     };
-
+  
+  // generic function for get list of datatype by search input
   const searchText = async ( value, type, setList) => {
       const { data } = await axios.get(`${type}?searchText=${value}`);
       setList(data);

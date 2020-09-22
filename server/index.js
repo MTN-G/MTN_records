@@ -43,47 +43,6 @@ function playReapet (nextSong, prevSong, results, res) {
         })
 }
 
-// get 20 top of.. 
-app.get('/top_songs', (req, res) => {
-    mysqlCon.query(`CALL get_top_songs`,
-    (error, results)=> {
-        if (error) {
-            res.status(404).send(error.message);
-        };
-        res.send(results[0]);
-      });
-});
-
-app.get('/top_artists', (req, res) =>{
-    mysqlCon.query(`CALL get_top_artists`,
-    (error, results)=> {
-        if (error) {
-            res.send(error.message);
-        };
-        res.send(results[0]);
-      });
-});
-
-app.get('/top_albums', (req, res) => {
-    mysqlCon.query(`CALL get_top_albums`,
-    (error, results)=> {
-        if (error) {
-            res.send(error.message);
-        };
-        res.send(results[0]);
-      });
-});
-
-app.get('/top_playlists', (req, res) => {
-    mysqlCon.query(`CALL get_top_playlists`,
-    (error, results)=> {
-        if (error) {
-            res.send(error.message);
-        };
-        res.send(results[0]);
-      });
-});
-
 // get song info and suggested song
 app.get(`/songs/:id/`, (req, res)=>{
     mysqlCon.query(`CALL get_song_by_id (${req.params.id})`,
@@ -120,19 +79,17 @@ app.get(`/artists/:id`, (req, res)=>{
         if (error) {
             res.status(400).send(error);
         };
-        res.status(200).send(results[0]);
+        mysqlCon.query(`CALL songs_of_artist (${req.params.id})`,
+            (err, resultsA)=>{
+                if (err) {
+                    res.status(400).send(err);
+                };
+                console.log(resultsA[0])
+                results[1] = resultsA[0]
+                res.status(200).send(results);
+            });
     });
-});
-
-// get all songs of artist
-app.get(`/artists/:id/songs`, (req, res)=>{
-    mysqlCon.query(`CALL songs_of_artist (${req.params.id})`,
-    (error, results)=>{
-        if (error) {
-            res.status(400).send(error);
-        };
-        res.status(200).send(results[0]);
-    });
+    
 });
 
 // get specific album 
@@ -194,8 +151,19 @@ app.delete(`/:table/:id`, (req, res) => {
     });
 })
 
-// get all from element
+
 app.get(`/:table/`, (req, res) => {
+    // get only top 20 of type
+    if (req.params.table.includes('top')) {
+        mysqlCon.query(`CALL get_${req.params.table}`,
+        (error, results)=> {
+            if (error) {
+                res.send(error.message);
+            };
+            res.send(results[0]);
+          });
+    } else {
+    // get all from type
     mysqlCon.query(`SELECT * from ${req.params.table}`,
     (error, results)=>{
         if (error) {
@@ -208,7 +176,7 @@ app.get(`/:table/`, (req, res) => {
           } else {
             res.status(200).send(results);
           }
-    });
+    })};
 })
 
 app.listen(3001)
