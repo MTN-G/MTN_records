@@ -6,7 +6,7 @@ export default function Artists({ fetchData, searchText }) {
   const [artistsList, setArtistsList] = useState([]);
 
   useEffect(() => {
-    fetchData('/artists', setArtistsList);
+    fetchData('/api/artists', setArtistsList);
   }, []);
 
   return (

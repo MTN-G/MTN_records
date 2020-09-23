@@ -5,7 +5,7 @@ export default function Songs({ fetchData, searchText }) {
   const [songsList, setSongsList] = useState([]);
 
   useEffect(() => {
-    fetchData('/songs', setSongsList);
+    fetchData('/api/songs', setSongsList);
   }, []);
 
   return (

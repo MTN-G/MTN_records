@@ -6,7 +6,7 @@ export default function Albums({fetchData, searchText}) {
   const [albumsList, setAlbumsList] = useState([])
 
   useEffect(()=>{
-    fetchData('/albums', setAlbumsList)
+    fetchData('/api/albums', setAlbumsList)
   },[])
 
     return (<><input className="input"
