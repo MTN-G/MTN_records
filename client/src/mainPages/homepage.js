@@ -36,7 +36,7 @@ export default function HomePage () {
     importSongs();
     importArtists();
     importAlbums();
-    // importPlaylists();
+    importPlaylists();
   }, []);
 
   

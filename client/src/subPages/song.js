@@ -50,7 +50,7 @@ export default function Song () {
      <div> Artist: <Link to={`/artists/${songInfo.artist_id}`}><button>{songInfo.artist}</button></Link><br/></div>
      <div>Album: <Link to={`/albums/${songInfo.album_id}`}><button>{songInfo.album}</button></Link></div> |
      <button onClick={playNext}>play next</button></div>
-      <YouTube videoId={songInfo.youtube_link} opts={opts} onEnd={playNext}/>
+      <YouTube videoId={songInfo.youtubeLink} opts={opts} onEnd={playNext}/>
   <b className="created">created at {songInfo.created_at.toString().slice(0, 10)}</b>
     </div>
     {location.search ? 

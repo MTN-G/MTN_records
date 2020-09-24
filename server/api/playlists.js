@@ -4,13 +4,13 @@ const { Playlist } = require('../models');
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const allPlaylists = await Playlist.findAll();
+  const allPlaylists = await Playlist.findAll({include: ['songs']});
   res.json(allPlaylists)
 });
 
 router.get('/:playlistId', async (req, res) => {
-  const album = await Album.findByPk(req.params.playlistId);
-  res.json({ ...album.get(), duration })
+  const playlist = await Album.findByPk(req.params.playlistId);
+  res.json(playlist)
 });
 
 

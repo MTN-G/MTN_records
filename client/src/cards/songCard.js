@@ -27,7 +27,7 @@ export default function SongCard({
     <div key={song.id} className="card">
       <h2 className="title">{song.name || song.song}</h2>
       <br />
-      <img alt="youtube" src={`https://img.youtube.com/vi/${song.youtube_link}/0.jpg`} height="100" width="200" style={{borderStyle: "solid"}}/>
+      <img alt="youtube" src={`https://img.youtube.com/vi/${song.youtubeLink}/0.jpg`} height="100" width="200" style={{borderStyle: "solid"}}/>
       <div className="abouthome">
         {song.artist && (
           <div>
