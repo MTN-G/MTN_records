@@ -12,7 +12,7 @@ export default function AlbumCard({ album }) {
         <div>
           {' '}
           by:
-          <Link to={`/artists/${album.artist_id}`}><button>{album.artist}</button></Link>
+          <Link to={`/artists/${album.artist_id || album.id}`}><button>{album.artist}</button></Link>
         </div>
         )}
       {window.location.pathname !== `/albums/${album.id}`

@@ -10,15 +10,7 @@ export default function Song () {
   const history = useHistory();
   const location = useLocation();
 
-  const fetchSong = async () => {
-    try {
-    const { data } = await axios.get(location.pathname + location.search)
-    setSongInfo(data[0])
-    data[1] ? setRecomendedSongs(data[1].concat(data[2])) : setRecomendedSongs()
-  } catch {
-    console.log('error')
-  }
-  };
+  
 
   const type =
    location.search.slice(1, location.search.length - 2)
@@ -32,7 +24,16 @@ export default function Song () {
   }
 
   useEffect(()=>{
-    fetchSong()
+    const fetchSong = async () => {
+      try {
+      const { data } = await axios.get(location.pathname + location.search)
+      setSongInfo(data[0])
+      data[1] ? setRecomendedSongs(data[1].concat(data[2])) : setRecomendedSongs()
+      } catch {
+        console.log('error')
+      }
+      };
+      fetchSong()
   },[location]) 
   
 

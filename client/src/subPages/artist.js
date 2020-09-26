@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard.js'
 import axios from 'axios';
@@ -10,18 +10,19 @@ export default function Artist () {
   const [artistInfo, setArtistInfo] = useState([])
   const [artistAlbums, setArtistAlbums] = useState([])
   const [artistSongs, setArtistSongs] = useState([])
-  const match = useRouteMatch('/artists/:id');
-
-  const fetchArtist = async () => {
-    const { data } = await axios.get(match.url);
-    setArtistInfo(data[0][0])
-    setArtistAlbums(data[0])
-    setArtistSongs(data[1])
-  };
+  const location = useLocation();
 
   useEffect(()=>{
+    const fetchArtist = async () => {
+      const { data } = await axios.get(location.pathname);
+      setArtistInfo(data[0][0])
+      setArtistAlbums(data[0])
+      setArtistSongs(data[1])
+    };
     fetchArtist()
-  },[])
+  },[location])
+
+  console.log(artistAlbums)
 
   return (<div id="artist">
   <div className="artistpage">

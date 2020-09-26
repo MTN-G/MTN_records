@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
 import ArtistCard from '../cards/artistCard';
 
 export default function Artists({ fetchData, searchText }) {
+
+  const fetchArtists = useCallback(fetchData, [])
   const [artistsList, setArtistsList] = useState([]);
 
   useEffect(() => {
-    fetchData('/artists', setArtistsList);
-  }, []);
+    fetchArtists('/artists', setArtistsList);
+  }, [fetchArtists]);
 
   return (
     <>

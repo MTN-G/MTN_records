@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import AlbumCard from '../cards/albumCard';
 
-export default function Albums({fetchData, searchText}) {
+export default function Albums({ fetchData, searchText }) {
 
+  const fetchAlbums = useCallback(fetchData, [])
   const [albumsList, setAlbumsList] = useState([])
 
   useEffect(()=>{
-    fetchData('/albums', setAlbumsList)
-  },[])
+    fetchAlbums('/albums', setAlbumsList)
+  },[fetchAlbums])
 
     return (<><input className="input"
        onChange={e =>  searchText(e.target.value, '/albums', setAlbumsList) }
