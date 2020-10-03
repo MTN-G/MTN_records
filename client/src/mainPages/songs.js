@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SongCard from '../cards/songCard';
 
 export default function Songs({ fetchData, searchText }) {
   const [songsList, setSongsList] = useState([]);
+  const fetchSongs = useCallback(fetchData)
 
   useEffect(() => {
-    fetchData('/api/songs', setSongsList);
-  }, []);
+    fetchSongs('/api/songs', setSongsList);
+  }, [fetchSongs]);
 
   return (
     <>

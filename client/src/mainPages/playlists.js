@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PlaylistCard from '../cards/playlistCard';
 
 export default function Playlists({ fetchData, searchText }) {
   const [plList, setPlList] = useState([]);
+  const fetchPlaylist = useCallback(fetchData)
 
   useEffect(() => {
-    fetchData('/playlists', setPlList);
-    console.log(plList);
-  }, []);
+    fetchPlaylist('/playlists', setPlList);
+  }, [fetchPlaylist]);
 
   return (
     <>
