@@ -14,7 +14,9 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/:artistId', async (req, res) => {
-  const artist = await Artist.findByPk(req.params.artistId);
+  const artist = await Artist.findByPk(req.params.artistId, {
+    include: ['albums', 'songs']
+  });
   res.json(artist)
 })
 

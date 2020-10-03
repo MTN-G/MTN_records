@@ -5,12 +5,10 @@ import SongCard from "../cards/songCard";
 import YouTube from 'react-youtube'
 
 export default function Song () {
-  const [songInfo, setSongInfo] = useState({created_at: '0000-00-00'})
+  const [songInfo, setSongInfo] = useState({createdAt: '0000-00-00'})
   const [recomendedSongs, setRecomendedSongs] = useState([{playlist: null}])
   const history = useHistory();
   const location = useLocation();
-
- 
 
   const type =
    location.search.slice(1, location.search.length - 2)
@@ -26,8 +24,8 @@ export default function Song () {
   useEffect(()=>{
     const fetchSong = async () => {
     try {
-    const { data } = await axios.get(location.pathname + location.search)
-    setSongInfo(data[0])
+    const { data } = await axios.get('/api' + location.pathname + location.search)
+    setSongInfo(data)
     data[1] ? setRecomendedSongs(data[1].concat(data[2])) : setRecomendedSongs([{playlist: null}])
   } catch {
     console.log('error')
@@ -45,14 +43,14 @@ export default function Song () {
   return (
   <div className="songPage">
     <div className="single">
-      <h1 className="titleSong">{songInfo.name || songInfo.song}</h1>
+      <h1 className="titleSong">{songInfo.name}</h1>
       <div className="about">
      
-     <div> Artist: <Link to={`/artists/${songInfo.artist_id}`}><button>{songInfo.artist}</button></Link><br/></div>
-     <div>Album: <Link to={`/albums/${songInfo.album_id}`}><button>{songInfo.album}</button></Link></div> |
+     <div> Artist: <Link to={`/artists/${songInfo.artisId}`}><button>{songInfo.artist}</button></Link><br/></div>
+     <div>Album: <Link to={`/albums/${songInfo.albumId}`}><button>{songInfo.album}</button></Link></div> |
      <button onClick={playNext}>play next</button></div>
       <YouTube videoId={songInfo.youtubeLink} opts={opts} onEnd={playNext}/>
-  <b className="created">created at {songInfo.created_at.toString().slice(0, 10)}</b>
+  <b className="created">created at {songInfo.createdAt.toString().slice(0, 10)}</b>
     </div>
     {location.search ? 
     <div className="recomended">
@@ -63,7 +61,7 @@ export default function Song () {
         song => song && 
           <SongCard  miniCard={true} song={song} type={type} 
              typeId={
-              type === 'album' ?  song.album_id : type === 'artist' ? song.artist_id : type === 'playlist' ?  song.pl_id : null
+              type === 'album' ?  song.albumId : type === 'artist' ? song.artistId : type === 'playlist' ?  song.pl_id : null
              }/>
       )} 
     </div> :  null }
