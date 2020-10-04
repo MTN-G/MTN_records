@@ -1,1 +1,1 @@
-GET http://localhost:8080/api/albums/1
+GET http://localhost:8080/api/songs/2?playlist=1

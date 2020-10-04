@@ -20,13 +20,13 @@ export default function Song () {
       autoplay: 1,
     },
   }
-
+  console.log(songInfo)
   useEffect(()=>{
     const fetchSong = async () => {
     try {
-    const { data } = await axios.get('/api' + location.pathname + location.search)
-    setSongInfo(data)
-    data[1] ? setRecomendedSongs(data[1].concat(data[2])) : setRecomendedSongs([{playlist: null}])
+    const { data } = await axios.get(location.pathname + location.search)
+    setSongInfo(data[0])
+    data[1] && setRecomendedSongs(data[1])
   } catch {
     console.log('error')
   }

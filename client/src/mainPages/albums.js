@@ -7,7 +7,7 @@ export default function Albums({fetchData, searchText}) {
   const fetchAlbums = useCallback(fetchData)
 
   useEffect(()=>{
-    fetchAlbums('/api/albums', setAlbumsList)
+    fetchAlbums('/albums', setAlbumsList)
   },[fetchAlbums])
 
     return (<><input className="input"

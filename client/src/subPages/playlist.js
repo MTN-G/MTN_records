@@ -13,8 +13,8 @@ export default function Playlist() {
   useEffect(() => {
     const fetchPlaylist = async () => {
     const { data } = await axios.get(location.pathname);
-    setPlaylistInfo(data[0]);
-    setPlaylistSongs(data);
+    setPlaylistInfo(data);
+    setPlaylistSongs(data.Songs);
     console.log(data);
     };
     fetchPlaylist();
@@ -30,9 +30,9 @@ export default function Playlist() {
   return (
     <div id="album">
       <div className="albumPage">
-        <h1 className="title">{playlistInfo.playlist}</h1>
+        <h1 className="title">{playlistInfo.name}</h1>
         {playlistSongs[0] && <Link to={`/songs/${playlistSongs[0].id}?playlist=${playlistInfo.id}`}><button>Play</button></Link>}
-        <img alt="pl" src={playlistInfo.pl_img} height="300" width="500" style={{marginTop: '20px', borderStyle: 'solid', borderRadius: '20px', borderColor: "black"}}/>
+        <img alt="pl" src={playlistInfo.coverImg} height="300" width="500" style={{marginTop: '20px', borderStyle: 'solid', borderRadius: '20px', borderColor: "black"}}/>
         <br /><h3>
         {playlistSongs.length}
         {' '}

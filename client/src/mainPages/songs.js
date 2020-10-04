@@ -6,7 +6,7 @@ export default function Songs({ fetchData, searchText }) {
   const fetchSongs = useCallback(fetchData)
 
   useEffect(() => {
-    fetchSongs('/api/songs', setSongsList);
+    fetchSongs('/songs', setSongsList);
   }, [fetchSongs]);
 
   return (

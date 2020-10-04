@@ -5,13 +5,13 @@ import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard';
 
 export default function Album() {
+  
   const [albumInfo, setAlbumInfo] = useState({Artist: {}, Songs: []});
-
   const location = useLocation();
 
   useEffect(() => {
     const fetchAlbum = async () => {
-        const { data } = await axios.get('/api' + location.pathname);
+        const { data } = await axios.get(location.pathname);
         setAlbumInfo(data);
         console.log(data); 
       };
@@ -39,7 +39,7 @@ export default function Album() {
       </div>
       <Carousel id="songsAlbum" breakPoints={breakPoints}>
         {albumInfo.Songs.map(
-          (song) => <SongCard albumSongs={albumInfo.Songs} song={song} type="album" typeId={albumInfo.id} />,
+          (song) => <SongCard song={song} type="album" typeId={albumInfo.id} />,
         )}
       </Carousel>
     </div>

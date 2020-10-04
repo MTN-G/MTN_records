@@ -13,7 +13,7 @@ export default function Artist () {
 
   useEffect(()=>{
     const fetchArtist = async () => {
-      const { data } = await axios.get('/api' + loacation.pathname);
+      const { data } = await axios.get(loacation.pathname);
       setArtistInfo(data)
       console.log(data)
     };

@@ -6,7 +6,7 @@ export default function Artists({ fetchData, searchText }) {
   const fetchArtists = useCallback(fetchData)
 
   useEffect(() => {
-    fetchArtists('/api/artists', setArtistsList);
+    fetchArtists('/artists', setArtistsList);
   }, [fetchArtists]);
 
   return (

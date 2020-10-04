@@ -13,22 +13,22 @@ export default function HomePage () {
   const [topPlaylists, setTopPlaylists] = useState([]);
 
   const importSongs = async () => {
-    const { data } = await axios.get('/api/songs');
+    const { data } = await axios.get('/songs');
     setTopSongs(data);
   };
 
   const importArtists = async () => {
-    const { data } = await axios.get('/api/artists');
+    const { data } = await axios.get('/artists');
     setTopArtists(data);
   };
 
   const importAlbums = async () => {
-    const { data } = await axios.get('/api/albums');
+    const { data } = await axios.get('/albums');
     setTopAlbums(data);
   };
 
   const importPlaylists = async () => {
-    const { data } = await axios.get('/api/playlists');
+    const { data } = await axios.get('/playlists');
     setTopPlaylists(data);
   };
 

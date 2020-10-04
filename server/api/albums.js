@@ -21,7 +21,16 @@ router.get('/', async (req, res) => {
 
 router.get('/:albumId', async (req, res) => {
   const album = await Album.findByPk(req.params.albumId, {
-    include: ['Songs' , 'Artist']
+    include: [
+      {
+        model: Artist,
+        attributes: ["name"] 
+      },
+      {
+        model: Song,
+        attributes: ['id', 'name', 'youtubeLink']
+      }
+    ]
   });
   res.json(album)
 });

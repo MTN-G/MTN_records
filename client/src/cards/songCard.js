@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SongCard({
-  song, type, typeId, miniCard,
+  song, type, typeId, miniCard
 }) {
   let url = `/songs/${ song.song_id || song.id}`;
 
@@ -13,7 +13,7 @@ export default function SongCard({
   if (miniCard) {
     return (
       <>
-        <div key={song.song_id || song.id} className="miniCard">
+        <div key={song.id} className="miniCard">
           <b>{song.name}</b>
           <Link to={url}><button style={{ width: '50px', float: 'right' }}>Play Song</button></Link>
         </div>
