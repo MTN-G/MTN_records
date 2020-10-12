@@ -45,7 +45,7 @@ export default function SongCard({
         )}
       </div>
       <br />
-      <Link to={url}><button>Go To Song Page</button></Link>
+      <Link to={url}><button>Play Song</button></Link>
     </div>
   );
 }

@@ -5,8 +5,8 @@ import SongCard from "../cards/songCard";
 import YouTube from 'react-youtube'
 
 export default function Song () {
-  const [songInfo, setSongInfo] = useState({})
-  const [recomendedSongs, setRecomendedSongs] = useState([])
+  const [songInfo, setSongInfo] = useState()
+  const [recomendedSongs, setRecomendedSongs] = useState()
   const history = useHistory();
   const location = useLocation();
 
@@ -24,8 +24,8 @@ export default function Song () {
     const fetchSong = async () => {
     try {
     const { data } = await axios.get(location.pathname + location.search)
-    setSongInfo(data[0])
-    console.log(data)
+    setSongInfo(data[0] || data)
+    console.log(data[0])
     data[1] && setRecomendedSongs(data[1])
     data[2] && setPlaylistName(data[2])
     console.log(playlistName)
@@ -42,14 +42,14 @@ export default function Song () {
     history.push(`/songs/${recomendedSongs[0].id}${location.search}`)
   }
 
-  return (
+  return songInfo ? (
   <div className="songPage">
     <div className="single"> 
       <h1 className="titleSong">{songInfo.name}</h1>
       <div className="about">
      <div>Artist: <Link to={`/artists/${songInfo.artistId}`}><button>{songInfo.Artist && songInfo.Artist.name}</button></Link><br/></div>
      <div>Album: <Link to={`/albums/${songInfo.albumId}`}><button>{songInfo.Album && songInfo.Album.name}</button></Link></div> |
-     <button onClick={playNext}>play next</button></div>
+  {recomendedSongs && <button onClick={playNext}>play next</button>}</div>
       <YouTube videoId={songInfo.youtubeLink} opts={opts} onEnd={playNext}/>
   <b className="created">created at {songInfo.createdAt && songInfo.createdAt.toString().slice(0, 10)}</b>
     </div>
@@ -64,5 +64,5 @@ export default function Song () {
       )} 
     </div> :  null }
   </div>
-    )
+    ) : null
 }
