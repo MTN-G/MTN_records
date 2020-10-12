@@ -37,7 +37,7 @@ export default function Artist () {
   <div style={{width: "500px",  textAlign: "center"}}> <h3>display {artistInfo.songs.length} songs of {artistInfo.name} </h3>
   <Carousel >
     {artistInfo.songs.map(
-    song => <SongCard style={{height:"150px"}} song={song} type="artist" typeId={artistInfo.id}/>
+    song => <SongCard style={{height:"150px"}} song={song} searchParam={`?artist=${artistInfo.id}`}/>
     )}
   </Carousel> </div>
   </div> 

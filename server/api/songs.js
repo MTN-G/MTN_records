@@ -43,7 +43,7 @@ router.get('/:songId', async (req, res) => {
     })
     const nextSongs = await Song.findAll({
         where: {
-          [Op.and]: [{ albumId: req.query.album }, { id: {[Op.gt]: req.params.songId} }],
+          [Op.and]: [{ albumId: req.query.album}, { id: {[Op.gt]: req.params.songId} }],
         }
   })
     res.json([song, nextSongs.concat(prevSongs)])
@@ -63,24 +63,27 @@ router.get('/:songId', async (req, res) => {
   }
   else if (req.query.playlist) {
     const prevSongs = await Playlist.findByPk(req.query.playlist, {
-       include: {
-         model: Song,
-         where: {
+      include: {
+        model: Song,
+        where: {
           id: {[Op.lt]: req.params.songId}
-         }
-       }   
-     }
-   )
+        }
+      }   
+     })
    const nextSongs = await Playlist.findByPk(req.query.playlist, {
     include: {
       model: Song,
       where: {
-       id: {[Op.gt]: req.params.songId}
+        id: {[Op.gt]: req.params.songId}
       }
     }   
-  }
-) || []
-  res.json([song,  nextSongs.concat(prevSongs)])
+   })
+   nextSongs && prevSongs ? res.json([song, nextSongs.Songs.concat(prevSongs.Songs), prevSongs.name]) :
+   nextSongs ? res.json([song, nextSongs.Songs, nextSongs.name]) :
+   prevSongs ? res.json([song, prevSongs.Songs, prevSongs.name]) :
+   res.json(song)
+
+  
   }
   else {
     res.json(song)

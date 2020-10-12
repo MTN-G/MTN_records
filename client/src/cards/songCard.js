@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SongCard({
-  song, type, typeId, miniCard
+  song, searchParam, miniCard
 }) {
   let url = `/songs/${ song.song_id || song.id}`;
 
-  if (type && typeId) {
-    url = `/songs/${song.song_id || song.id}?${type}=${typeId}`;
+  if (searchParam) {
+    url = `/songs/${song.song_id || song.id}${searchParam}`;
   }
 
   if (miniCard) {

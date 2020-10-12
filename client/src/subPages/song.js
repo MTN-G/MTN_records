@@ -5,13 +5,12 @@ import SongCard from "../cards/songCard";
 import YouTube from 'react-youtube'
 
 export default function Song () {
-  const [songInfo, setSongInfo] = useState({createdAt: '0000-00-00'})
-  const [recomendedSongs, setRecomendedSongs] = useState([{playlist: null}])
+  const [songInfo, setSongInfo] = useState({})
+  const [recomendedSongs, setRecomendedSongs] = useState([])
   const history = useHistory();
   const location = useLocation();
 
-  const type =
-   location.search.slice(1, location.search.length - 2)
+  const [playlistName, setPlaylistName] = useState('')
 
   const opts = {
     height: '250',
@@ -20,13 +19,16 @@ export default function Song () {
       autoplay: 1,
     },
   }
-  console.log(songInfo)
+
   useEffect(()=>{
     const fetchSong = async () => {
     try {
     const { data } = await axios.get(location.pathname + location.search)
     setSongInfo(data[0])
+    console.log(data)
     data[1] && setRecomendedSongs(data[1])
+    data[2] && setPlaylistName(data[2])
+    console.log(playlistName)
   } catch {
     console.log('error')
   }
@@ -42,27 +44,23 @@ export default function Song () {
 
   return (
   <div className="songPage">
-    <div className="single">
+    <div className="single"> 
       <h1 className="titleSong">{songInfo.name}</h1>
       <div className="about">
-     
-     <div> Artist: <Link to={`/artists/${songInfo.artisId}`}><button>{songInfo.artist}</button></Link><br/></div>
-     <div>Album: <Link to={`/albums/${songInfo.albumId}`}><button>{songInfo.album}</button></Link></div> |
+     <div>Artist: <Link to={`/artists/${songInfo.artistId}`}><button>{songInfo.Artist && songInfo.Artist.name}</button></Link><br/></div>
+     <div>Album: <Link to={`/albums/${songInfo.albumId}`}><button>{songInfo.Album && songInfo.Album.name}</button></Link></div> |
      <button onClick={playNext}>play next</button></div>
       <YouTube videoId={songInfo.youtubeLink} opts={opts} onEnd={playNext}/>
-  <b className="created">created at {songInfo.createdAt.toString().slice(0, 10)}</b>
+  <b className="created">created at {songInfo.createdAt && songInfo.createdAt.toString().slice(0, 10)}</b>
     </div>
-    {location.search ? 
+    {location.search && recomendedSongs.length > 0? 
     <div className="recomended">
-     {type === 'album' ? <h2>More song from {songInfo.album}</h2>  : null }
-     {type === 'artist' ? <h2>More song from {songInfo.artist}</h2> : null }
-     {type === 'playlist' ? <h2>More song from {recomendedSongs[0].playlist}</h2> : null }
+     {location.search.includes('album') ? <h2>More song from {songInfo.Album.name}</h2>  : null }
+     {location.search.includes('artist')? <h2>More song from {songInfo.Artist.name}</h2> : null }
+     {location.search.includes('playlist') ? <h2>More song from {playlistName}</h2> : null }
      {recomendedSongs.map(
         song => song && 
-          <SongCard  miniCard={true} song={song} type={type} 
-             typeId={
-              type === 'album' ?  song.albumId : type === 'artist' ? song.artistId : type === 'playlist' ?  song.pl_id : null
-             }/>
+          <SongCard  miniCard={true} song={song} searchParam={location.search}/>
       )} 
     </div> :  null }
   </div>

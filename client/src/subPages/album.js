@@ -39,7 +39,7 @@ export default function Album() {
       </div>
       <Carousel id="songsAlbum" breakPoints={breakPoints}>
         {albumInfo.Songs.map(
-          (song) => <SongCard song={song} type="album" typeId={albumInfo.id} />,
+          (song) => <SongCard song={song} searchParam={`?album=${albumInfo.id}`}/>,
         )}
       </Carousel>
     </div>

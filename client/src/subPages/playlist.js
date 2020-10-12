@@ -40,7 +40,7 @@ export default function Playlist() {
       </div>
       <Carousel breakPoints={breakPoints}>
         {playlistSongs.map(
-          (song) => <SongCard song={song} type="playlist" typeId={playlistInfo.id} />,
+          (song) => <SongCard song={song} searchParam={`?playlist=${playlistInfo.id}`} />,
         )}
       </Carousel>
     </div>
