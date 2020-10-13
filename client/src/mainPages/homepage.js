@@ -50,7 +50,6 @@ export default function HomePage () {
             (song) => <SongCard song={song} />,
           )}
         </Carousel>
-        <hr />
       </div>
       <div className="quarter">
         <h2>Top 20 Artists</h2>
@@ -59,7 +58,6 @@ export default function HomePage () {
             (artist) => <ArtistCard artist={artist} />,
           )}
         </Carousel>
-        <hr />
       </div>
       <div className="quarter">
         <h2>Top 20 Albums</h2>
@@ -68,7 +66,6 @@ export default function HomePage () {
             (album) => <AlbumCard album={album} />,
           )}
         </Carousel>
-        <hr />
       </div>
       <div className="quarter">
         <h2>Top 20 Playlists</h2>
@@ -77,7 +74,6 @@ export default function HomePage () {
             (playlist) => <PlaylistCard playlist={playlist} />,
           )}
         </Carousel>
-        <hr />
       </div>
     </div>
   );
