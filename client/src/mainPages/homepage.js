@@ -42,7 +42,7 @@ export default function HomePage () {
   
 
   return (
-    <div className="grid">
+    <div className="gridhome">
       <div className="quarter">
         <h2>Top 20 Song</h2>
         <Carousel>

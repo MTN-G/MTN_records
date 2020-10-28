@@ -1,6 +1,4 @@
-
-
-.grid {
+.gridhome {
   text-align: center;
   justify-content: center;
   display: grid;
@@ -24,16 +22,18 @@
   background-color:#fff;
   display:grid;
   grid-template-columns: 30% 30% 30%;
-  grid-row: auto auto auto;
-  margin-top: 140px;
   grid-template: "input input input";
 }
 
+.gridpage {
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+  align-items: center;
+  gap: 20px
+}
 
 .input {
-  position: fixed;
-  top: 33px;
-  left: 850px;
   z-index: 3;
   text-align: center;
   align-items: center;

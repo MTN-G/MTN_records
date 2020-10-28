@@ -1,4 +1,3 @@
-const e = require('express');
 const { Router } = require('express');
 const { Playlist, PlaylistSong, Song } = require('../models');
 
