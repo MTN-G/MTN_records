@@ -4,6 +4,7 @@ import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard.js'
 import AlbumCard from "../cards/albumCard.js";
+import { myArrow } from "../utils.js";
 
 export default function Artist () {
 
@@ -28,7 +29,7 @@ export default function Artist () {
       <div className="carusels">
         <div style={{width: "500px", textAlign: "center"}}>
           <h3>display {artistInfo.albums.length} albums of {artistInfo.name} </h3>
-          <Carousel >
+          <Carousel renderArrow={myArrow}>
             {artistInfo.albums.map(
             album => <AlbumCard album={album}/>   
             )}
@@ -36,7 +37,7 @@ export default function Artist () {
         </div> 
         <div style={{width: "500px",  textAlign: "center"}}> 
           <h3>display {artistInfo.songs.length} songs of {artistInfo.name} </h3>
-          <Carousel >
+          <Carousel renderArrow={myArrow}>
             {artistInfo.songs.map(
             song => <SongCard style={{height:"150px"}} song={song} searchParam={`?artist=${artistInfo.id}`}/>
             )}

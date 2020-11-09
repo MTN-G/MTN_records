@@ -5,6 +5,7 @@ import SongCard from '../cards/songCard.js';
 import ArtistCard from '../cards/artistCard.js';
 import AlbumCard from '../cards/albumCard.js';
 import PlaylistCard from '../cards/playlistCard.js';
+import { myArrow } from '../utils'
 
 export default function HomePage () {
 
@@ -44,7 +45,7 @@ export default function HomePage () {
     <div className="home">
       <div className="quarter">
         <h2>Top Songs</h2>
-        <Carousel>
+        <Carousel renderArrow={myArrow}>
           {topSongs.map(
             (song) => <SongCard song={song} />,
           )}
@@ -52,7 +53,7 @@ export default function HomePage () {
       </div>
       <div className="quarter">
         <h2>Top Artists</h2>
-        <Carousel>
+        <Carousel renderArrow={myArrow}>
           {topArtists.map(
             (artist) => <ArtistCard artist={artist} />,
           )}
@@ -60,7 +61,7 @@ export default function HomePage () {
       </div>
       <div className="quarter">
         <h2>Top Albums</h2>
-        <Carousel>
+          <Carousel renderArrow={myArrow}>
           {topAlbums.map(
             (album) => <AlbumCard album={album} />,
           )}
@@ -68,7 +69,7 @@ export default function HomePage () {
       </div>
       <div className="quarter">
         <h2>Top Playlists</h2>
-        <Carousel>
+        <Carousel renderArrow={myArrow}>
           {topPlaylists.map(
             (playlist) => <PlaylistCard playlist={playlist} />,
           )}

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard';
+import { myArrow } from '../utils';
 
 export default function Album() {
   
@@ -37,7 +38,7 @@ export default function Album() {
         {' '}
         songs in this album</h3>
       </div>
-      <Carousel id="songsAlbum" breakPoints={breakPoints}>
+      <Carousel id="songsAlbum" breakPoints={breakPoints} renderArrow={myArrow}>
         {albumInfo.Songs.map(
           (song) => <SongCard song={song} searchParam={`?album=${albumInfo.id}`}/>,
         )}

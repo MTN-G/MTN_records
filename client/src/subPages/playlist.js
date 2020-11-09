@@ -3,6 +3,7 @@ import { Link, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import SongCard from '../cards/songCard';
+import { myArrow } from '../utils';
 
 export default function Playlist() {
   const [playlistInfo, setPlaylistInfo] = useState([]);
@@ -38,7 +39,7 @@ export default function Playlist() {
         {' '}
         songs in this playlist</h3>
       </div>
-      <Carousel breakPoints={breakPoints}>
+      <Carousel breakPoints={breakPoints} renderArrow={myArrow}>
         {playlistSongs.map(
           (song) => <SongCard song={song} searchParam={`?playlist=${playlistInfo.id}`} />,
         )}

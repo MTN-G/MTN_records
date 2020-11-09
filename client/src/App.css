@@ -66,12 +66,14 @@
   row-gap: 10px;
   padding: 15px 200px 15px 5px;
   color: rgba(192, 8, 192, 0.747);
+  text-align: center;
 }
 
 .links {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  align-items: center;
 }
 
 .card {
@@ -108,6 +110,7 @@
 }
 
 button {
+  cursor: pointer;
   background-color: lavender;
   border-color: cornflowerblue;
   border-radius: 20px;

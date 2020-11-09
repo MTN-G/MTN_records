@@ -18,15 +18,6 @@ export default function GridPage () {
     fetchData();
   }, [location]);
   
-  const searchText = async (value) => {
-    const { data } = await axios.get(`${location.pathname}`, {
-      params: {
-        searchText: value
-      }
-    });
-    setList(data);
-};
-
   return (
     <div className='gridpage'>
       <div className="mainpage">
