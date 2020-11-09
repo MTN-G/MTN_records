@@ -10,13 +10,13 @@ export default function Header() {
         <Link to="/albums"><button>albums</button></Link>
         <Link to="/playlists"><button>playlists</button></Link>
       </div>
-
       <div className="text">
         <h1 className="line">MTN records </h1>
         <h4 className="line">Hear Whatever You Wanna Listen To... </h4>
       </div>
       <div className="links">
         <Link to="/"><button>Home</button></Link>
+        <Link to="/search"><button>Search</button></Link>
       </div>
     </div>
   );

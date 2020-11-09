@@ -45,4 +45,4 @@ export default function Playlist() {
       </Carousel>
     </div>
   );
-}
+};

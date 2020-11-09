@@ -9,15 +9,38 @@ router.use('/artists', require('./artists'));
 router.use('/playlists', require('./playlists'));
 
 router.get('/search',async (req, res) => {
-    let allElements = []  
-    const allPlaylists = await Song.findAll({
+    if (req.query.searchText === '') res.send([])
+    const response = [
+        {
+            name: 'Songs',
+            data: await findAllBySearch(Song, req.query.searchText)
+        },
+        {
+            name: 'Albums',
+            data: await findAllBySearch(Album, req.query.searchText)
+        },
+        {
+            name: 'Artists',
+            data: await findAllBySearch(Artist, req.query.searchText)
+        },
+        {
+            name: 'Playlists',
+            data: await findAllBySearch(Playlist, req.query.searchText)
+        }
+    ]
+    console.log(response)
+    res.send(response)
+    })
+
+async function findAllBySearch (model, query) {
+    const response = await model.findAll({
         where: {
             name: {
-                [Op.substring] : `${req.query.searchText}`
+                [Op.substring] : `${query}`
             }
         }
     });
-    res.send(allPlaylists)
-    })
+    return response
+}
 
 module.exports = router;

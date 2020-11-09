@@ -13,24 +13,22 @@ export default function GridPage () {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(location.pathname);
-      setList(data)
+      setList(data);
     };
-    fetchData()
+    fetchData();
   }, [location]);
   
   const searchText = async (value) => {
-    const { data } = await axios.get(`${location.pathname}?searchText=${value}`);
+    const { data } = await axios.get(`${location.pathname}`, {
+      params: {
+        searchText: value
+      }
+    });
     setList(data);
 };
 
   return (
     <div className='gridpage'>
-      <input
-        className="input"
-        onChange={(e) => searchText(e.target.value)}
-        type="text"
-        placeholder="search your music..."
-      />
       <div className="mainpage">
         {list.map(
           piece => {

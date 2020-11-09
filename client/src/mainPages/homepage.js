@@ -7,6 +7,7 @@ import AlbumCard from '../cards/albumCard.js';
 import PlaylistCard from '../cards/playlistCard.js';
 
 export default function HomePage () {
+
   const [topSongs, setTopSongs] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
   const [topAlbums, setTopAlbums] = useState([]);
@@ -39,12 +40,10 @@ export default function HomePage () {
     importPlaylists();
   }, []);
 
-  
-
   return (
-    <div className="gridhome">
+    <div className="home">
       <div className="quarter">
-        <h2>Top 20 Song</h2>
+        <h2>Top Songs</h2>
         <Carousel>
           {topSongs.map(
             (song) => <SongCard song={song} />,
@@ -52,7 +51,7 @@ export default function HomePage () {
         </Carousel>
       </div>
       <div className="quarter">
-        <h2>Top 20 Artists</h2>
+        <h2>Top Artists</h2>
         <Carousel>
           {topArtists.map(
             (artist) => <ArtistCard artist={artist} />,
@@ -60,7 +59,7 @@ export default function HomePage () {
         </Carousel>
       </div>
       <div className="quarter">
-        <h2>Top 20 Albums</h2>
+        <h2>Top Albums</h2>
         <Carousel>
           {topAlbums.map(
             (album) => <AlbumCard album={album} />,
@@ -68,7 +67,7 @@ export default function HomePage () {
         </Carousel>
       </div>
       <div className="quarter">
-        <h2>Top 20 Playlists</h2>
+        <h2>Top Playlists</h2>
         <Carousel>
           {topPlaylists.map(
             (playlist) => <PlaylistCard playlist={playlist} />,

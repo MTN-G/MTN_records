@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useHistory} from "react-router-dom";
 import axios from 'axios';
 import SongCard from "../cards/songCard";
-import YouTube from 'react-youtube'
+import YouTube from 'react-youtube';
 
 export default function Song () {
-  const [songInfo, setSongInfo] = useState()
-  const [recomendedSongs, setRecomendedSongs] = useState()
+  
+  const [songInfo, setSongInfo] = useState();
+  const [recomendedSongs, setRecomendedSongs] = useState();
+  const [playlistName, setPlaylistName] = useState('');
+
   const history = useHistory();
   const location = useLocation();
-
-
-
-  const [playlistName, setPlaylistName] = useState('')
 
   const opts = {
     height: '250',
@@ -20,33 +19,33 @@ export default function Song () {
     playerVars: {
       autoplay: 1,
     },
-  }
+  };
 
   useEffect(()=>{
     const fetchSong = async () => {
-    try {
-    const { data } = await axios.get(location.pathname + location.search)
-    if (data.length > 1) {
-      setSongInfo(data[0])
-      setRecomendedSongs(data[1])
-      if (data.length > 2) {
-        setPlaylistName(data[2])
-      }
-    } else {
-      setSongInfo(data)
-    }
-  } catch {
-    console.log('error')
-  }
-  };
-    fetchSong()
-  },[location]) 
+      try {
+        const { data } = await axios.get(location.pathname + location.search)
+        if (data.length > 1) {
+          setSongInfo(data[0]);
+          setRecomendedSongs(data[1]);
+          if (data.length > 2) {
+            setPlaylistName(data[2]);
+          };
+        } else {
+            setSongInfo(data);
+        };
+      } catch {
+          console.log('error');
+      };
+    };
+    fetchSong();
+  } , [location]) 
   
 
   function playNext () {
     recomendedSongs[0].id && 
-    history.push(`/songs/${recomendedSongs[0].id}${location.search}`)
-  }
+    history.push(`/songs/${recomendedSongs[0].id}${location.search}`);
+  };
 
   return songInfo ? (
     <div className="songPage">
@@ -72,4 +71,4 @@ export default function Song () {
       </div> :  null }
     </div> 
     ) : (<>{console.log(songInfo)}</>)
-}
+};

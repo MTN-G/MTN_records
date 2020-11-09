@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-     await queryInterface.bulkInsert('Artists', [{
+     await queryInterface.bulkInsert('Songs', [{
        name: 'John Doe',
        coverImg: false,
        createdAt: new Date(),
