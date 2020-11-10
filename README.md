@@ -1,4 +1,5 @@
-# <img src='logo.png' width='250px' height='250px'/>
+# MTN_records
+<img src='logo.png' width='250px' height='250px'/>
 
 Hello! welcome to my music app based on my skills in React.js, express.js, node.js & SQL
 
