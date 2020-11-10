@@ -1,4 +1,4 @@
-# <img src='logo.png'/>
+# <img src='logo.png' width='50px' height='50px'/>
 
 Hello! welcome to my music app based on my skills in React.js, express.js, node.js & SQL
 
