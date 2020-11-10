@@ -14,7 +14,10 @@ export default function SongCard({
     return (
       <>
         <div key={song.id} className="miniCard">
-          <b>{song.name}</b>
+          <div>
+            <b>{song.name}</b>
+            <p>{song.length}</p>
+          </div>
           <Link to={url}><button style={{ width: '50px', float: 'right' }}>Play Song</button></Link>
         </div>
         <hr />
