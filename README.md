@@ -1,9 +1,9 @@
-# ![MTN-logo](./logo.png) MTN_records
+# ![MTN-logo](./logo.png=50x50)
 
-Hello! this full stack project simulate a music app.
+Hello! welcome to my music app based on my skills in React.js, express.js, node.js & SQL
 
+## instructions
 - fork / clone this repo.
-
 - cd server && npm i
 - cd ../client && npm i
 - create new db for development - default name is `records` (can change by .env file)
