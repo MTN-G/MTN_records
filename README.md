@@ -9,4 +9,6 @@ Hello! this full stack project simulate a music app.
 - create new db for development - default name is `records` (can change by .env file)
 - Change `example.env` file name to `.env` and set your deatails
 - run migration: `npm run migrate` (in server folder)
-- run seeder: `npm run seeders`
+- run seeder: `npm run seeders`  (in server folder)
+- cd server && `npm run dev`
+- cd client (another terminal) && `npm start`
