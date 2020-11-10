@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'PlaylistSong',
-    timestamps: false,
-    
+    tableName: 'playlistSongs',
+    paranoid: true,
   });
   return PlaylistSong;
 };

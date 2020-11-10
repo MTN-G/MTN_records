@@ -22,10 +22,13 @@ module.exports = (sequelize, DataTypes) => {
     albumId: DataTypes.INTEGER,
     artistId: DataTypes.INTEGER,
     youtubeLink: DataTypes.STRING,
-    length: DataTypes.TIME
+    lyrics: DataTypes.STRING,
+    length: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Song',
+    tableName: 'songs',
+    paranoid: true
   });
   return Song;
 };

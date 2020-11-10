@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Playlist',
+    tableName: 'playlists',
+    paranoid: true
   });
   return Playlist;
 };

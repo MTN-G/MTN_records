@@ -46,7 +46,7 @@ export default function HomePage () {
       <div className="quarter">
         <h2>Top Songs</h2>
         <Carousel renderArrow={myArrow}>
-          {topSongs.map(
+          {topSongs.slice(0, 10).map(
             (song) => <SongCard song={song} />,
           )}
         </Carousel>

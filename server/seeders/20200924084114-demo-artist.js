@@ -1,23 +1,15 @@
 'use strict';
 
+const artists = require('./seedFiles/artists')
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-     await queryInterface.bulkInsert('Songs', [{
-       name: 'John Doe',
-       coverImg: false,
-       createdAt: new Date(),
-       updatedAt: new Date()
-     }], {});
-  
+    await queryInterface.bulkInsert('artists', artists, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    
+    await queryInterface.bulkDelete('artists', artists, {});
   }
 };

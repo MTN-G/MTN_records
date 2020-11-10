@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "seeders": "node_modules/.bin/sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",
