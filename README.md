@@ -1,4 +1,4 @@
-# ![MTN-logo](logo.png =50x50) 
+# ![](./logo.png =50x50) 
 
 Hello! welcome to my music app based on my skills in React.js, express.js, node.js & SQL
 
