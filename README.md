@@ -1,4 +1,4 @@
-# ![](./logo.png =50x50) 
+# <img src='logo.png'/>
 
 Hello! welcome to my music app based on my skills in React.js, express.js, node.js & SQL
 
