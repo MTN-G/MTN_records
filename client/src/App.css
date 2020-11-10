@@ -1,0 +1,255 @@
+.home {
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  margin-top: 140px;
+  margin-bottom: 50px;
+}
+
+.mainpage {
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template: "input input input";
+}
+
+.gridpage {
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchPage {
+  margin-top: 130px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input {
+  text-align: center;
+  align-items: center;
+
+  height: 25px;
+  width: 220px;
+  border-radius: 20px;
+}
+.header {
+  background-color: #282c34;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: fantasy;
+  color: white;
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.line {
+  padding: 0px;
+  margin: 0px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 15px 165px 15px 0;
+  color: rgba(192, 8, 192, 0.747);
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.card {
+  border-style: solid;
+  border-width: medium;
+  justify-content: space-between;
+  background-image: url("https://s.tmimgcdn.com/scr/800x500/84200/colorful-polygon-backgrounds-background_84213-original.jpg");
+  border-radius: 2%;
+  font-style: italic;
+  padding: 10px;
+  width: 250px;
+}
+
+.miniCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(187, 174, 199);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+}
+
+button {
+  cursor: pointer;
+  background-color: lavender;
+  border-color: cornflowerblue;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: rebeccapurple;
+}
+
+.about {
+  font-weight: bolder;
+  padding-top: 12px;
+  display: flex;
+  gap: 8px;
+  padding-bottom: 5px;
+  background-color: rgb(187, 174, 199);
+  width: 490px;
+  padding-left: 10px;
+  border-radius: 25px 25px 0 0;
+}
+
+.abouthome {
+  font-weight: bolder;
+  padding-top: 12px;
+  display: flex;
+  gap: 8px;
+  padding-bottom: 5px;
+}
+
+h2 {
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  color: #282c34;
+}
+
+.quarter {
+  background-color: rgb(156, 135, 156);
+  padding: 10px;
+  border: black;
+  border-style: solid;
+  border-width: thick;
+  border-radius: 15px;
+  width: 350px;
+}
+
+.songPage {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.single {
+  background-image: url("https://3pageplus.com/wp-content/uploads/2019/03/change-background-color-on-wix-1024x678.jpg");
+  flex-direction: column;
+  justify-items: center;
+  border-style: solid;
+  border-width: thick;
+  border-color: black;
+  border-radius: 3%;
+  width: 60%;
+  margin-left: 50px;
+  row-gap: 10px;
+  padding: 20px;
+}
+
+.recomended {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: thick;
+  border-color: black;
+  border-radius: 3%;
+  width: 30%;
+  margin-right: 20px;
+  column-gap: 40px;
+  padding: 20px;
+  background-image: url("https://3pageplus.com/wp-content/uploads/2019/03/change-background-color-on-wix-1024x678.jpg");
+}
+
+#album {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.albumPage {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+}
+#artist {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.artistpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carusels {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.titleSong {
+  background-color: rgb(187, 174, 199);
+  border-radius: 20px;
+  padding: 7px;
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+}
+
+.created {
+  padding-top: 10px;
+  display: flex;
+  margin: 0%;
+  padding-bottom: 5px;
+  background-color: rgb(187, 174, 199);
+  width: 500px;
+  justify-content: center;
+  border-radius: 0 0 25px 25px;
+}
+
+.shit {
+  background-image: url("https://i.imagesup.co/images2/dab745b2f41bb6518f1d8c29ae89b0ec47ff98b9.jpg");
+  margin-top: 97px;
+  height: 480px;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 230px;
+  color: #fff;
+}
