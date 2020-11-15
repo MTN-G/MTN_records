@@ -4,8 +4,14 @@ const { Artist } = require('../models');
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const allArtists = await Artist.findAll({ include: ['songs']});
-  res.json(allArtists)
+  const allArtists = await Artist.findAll({ include: ['songs'] });
+  if (req.query.addData) {
+    const count = insertData(allArtists, "artists", "artist");
+    res.send(count)
+  }
+  else {
+    res.json(allArtists)
+  }
 })
 
 router.post('/', async (req, res) => {

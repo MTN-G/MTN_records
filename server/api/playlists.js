@@ -5,8 +5,14 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-  const allPlaylists = await Playlist.findAll();
-  res.json(allPlaylists)
+    const allPlaylists = await Playlist.findAll();
+    if (req.query.addData) {
+      const count = insertData(allPlaylists, "playlists", "playlist");
+      res.send(count)
+    }
+    else {
+      res.json(allPlaylists)
+    }
 } catch (e) {
   console.log(e)
 }

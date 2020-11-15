@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   });
   if (req.query.addData) {
     const count = insertData(allAlbums, "albums", "album");
-    res.send(count)
+    res.json({message: `${count} items inserted`})
   }
   else {
     res.json(allAlbums)

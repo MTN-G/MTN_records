@@ -7,9 +7,10 @@ import '../App.css';
 export default function Search () {
 
   const [filteredItems, setFilteredItems] = useState();
+  const [element, setElement] = useState('all')
 
   const searchFunction = async (value) => {
-    const { data } = await axios.get('/search', {
+    const { data } = await axios.get(`/search/${element}`, {
       params: {
         searchText: value
       }
@@ -27,6 +28,13 @@ export default function Search () {
         type="text"
         placeholder="search your music..."
       />
+      <select onChange={e => setElement(e.target.value)}>
+        <option>all</option>
+        <option>songs</option>
+        <option>albums</option>
+        <option>artists</option>
+        <option>playlists</option>
+      </select>
       <div style={{display: 'flex'}}>
       {filteredItems &&
           filteredItems.map((obj => 
