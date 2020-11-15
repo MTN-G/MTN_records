@@ -1,8 +1,12 @@
+require("dotenv").config();
 const { Router } = require('express');
 const { Op } = require("sequelize");
 const { Song, Artist, Album, Playlist } = require('../models');
+const insertData = require('../elasticSearch/addData');
+
 
 const router = Router();
+
 
 router.get('/', async (req, res) => {
   const allSongs = await Song.findAll({
@@ -17,8 +21,32 @@ router.get('/', async (req, res) => {
       }
     ]
   });
+  if (req.query.addData) {
+    const count = insertData("songs", "song");
+    res.send(count)
+  };
+
   res.json(allSongs)
 })
+
+const getFiltered = async (index, filter, size) => {
+  const filtered = await client.search({
+    size: size,
+    index: index,
+    body: {
+      query: {
+        prefix: { 'name': filter }
+      }
+    }
+  })
+  return filtered;
+}
+  
+  router.get('/ss', async (req, res) => {
+    const filter = req.query.filter ;
+    const filteredSongs = await getFiltered('songs', filter, 3);
+    res.send(filteredSongs)
+  })
 
 
 

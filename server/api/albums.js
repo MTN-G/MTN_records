@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Album, Artist, Song } = require('../models');
+const insertData =  require('../elasticSearch/addData');
 
 const router = Router();
 
@@ -16,7 +17,13 @@ router.get('/', async (req, res) => {
       }
     ]
   });
-  res.json(allAlbums)
+  if (req.query.addData) {
+    const count = insertData(allAlbums, "albums", "album");
+    res.send(count)
+  }
+  else {
+    res.json(allAlbums)
+  }
 });
 
 router.get('/:albumId', async (req, res) => {
